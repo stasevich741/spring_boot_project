@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Repository
 public class HelloRepository {
-    @Autowired
+  @Autowired
     private JdbcTemplate jdbcTemplate;
 
 
