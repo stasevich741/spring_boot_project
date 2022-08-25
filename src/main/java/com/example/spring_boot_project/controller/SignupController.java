@@ -1,5 +1,6 @@
 package com.example.spring_boot_project.controller;
 
+import com.example.spring_boot_project.form.GroupOrder;
 import com.example.spring_boot_project.form.SignupForm;
 import com.example.spring_boot_project.service.UserApplicationService;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +40,7 @@ public class SignupController {
      * User signup process
      */
     @PostMapping("/signup")
-    public String postSignup(Model model, Locale locale, @ModelAttribute @Validated SignupForm form, BindingResult bindingResult) {
+    public String postSignup(Model model, Locale locale, @ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return getSignup(model, locale, form);
         }

@@ -10,26 +10,26 @@ import java.util.Date;
 @Data
 public class SignupForm {
 
-    @NotBlank
-    @Email
+    @NotBlank(groups = ValidGroup1.class)
+    @Email(groups = ValidGroup2.class)
     private String userId;
 
-    @NotBlank
-    @Length(min = 6, max = 15, message = "password length min 6 max 15")
-    @Pattern(regexp = "^[a-zA-Z\\d]+$")
+    @NotBlank(groups = ValidGroup1.class)
+    @Length(min = 6, max = 15, groups = ValidGroup2.class, message = "password length min 6 max 15")
+    @Pattern(regexp = "^[a-zA-Z\\d]+$", groups = ValidGroup2.class)
     private String password;
 
-    @NotBlank
+    @NotBlank(groups = ValidGroup1.class)
     private String userName;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @NotNull
+    @NotNull(groups = ValidGroup1.class)
     private Date birthday;
 
-    @Min(18)
-    @Max(100)
+    @Min(value = 18, groups = ValidGroup2.class)
+    @Max(value = 100, groups = ValidGroup2.class)
     private Integer age;
 
-    @NotNull
+    @NotNull(groups = ValidGroup1.class)
     private Integer gender;
 }
