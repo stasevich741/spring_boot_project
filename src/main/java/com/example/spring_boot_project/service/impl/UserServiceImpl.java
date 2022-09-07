@@ -14,6 +14,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * User signup
+     */
     @Override
     public void signup(UserMaster user) {
         user.setDepartmentId(1);
@@ -21,8 +24,35 @@ public class UserServiceImpl implements UserService {
         userMapper.insertOne(user);
     }
 
+    /**
+     * Get user
+     */
     @Override
     public List<UserMaster> getUsers() {
         return userMapper.findMany();
+    }
+
+    /**
+     * Get user(1record)
+     */
+    @Override
+    public UserMaster findOne(String id) {
+        return userMapper.findOne(id);
+    }
+
+    /**
+     * Update user
+     */
+    @Override
+    public void updateUserOne(String userId, String password, String userName) {
+        userMapper.updateOne(userId, password, userName);
+    }
+
+    /**
+     * Delete user
+     */
+    @Override
+    public void deleteUserOne(String userId) {
+        userMapper.deleteOne(userId);
     }
 }

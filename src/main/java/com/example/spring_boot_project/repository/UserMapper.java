@@ -2,6 +2,7 @@ package com.example.spring_boot_project.repository;
 
 import com.example.spring_boot_project.entity.UserMaster;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,10 +12,27 @@ public interface UserMapper {
     /**
      * User signup
      */
-    public int insertOne(UserMaster userMaster);
+    int insertOne(UserMaster userMaster);
 
     /**
-     * Get user
+     * Get all users
      */
-    public List<UserMaster> findMany();
+    List<UserMaster> findMany();
+
+    /**
+     * Get user by id
+     */
+    UserMaster findOne(String id);
+
+    /**
+     * Update user
+     */
+    void updateOne(@Param("userId") String userId,
+                   @Param("password") String password,
+                   @Param("userName") String userName);
+
+    /**
+     * Delete user
+     */
+    int deleteOne(@Param("userId") String userId);
 }

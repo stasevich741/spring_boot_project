@@ -16,4 +16,18 @@ public interface UserService {
      */
     public List<UserMaster> getUsers();
 
+    /**
+     * Get user by id
+     */
+    public UserMaster findOne(String id);
+
+    public void updateUserOne(String userId,
+                              String password,
+                              String userName);
+
+    /**
+     * Delete user
+     */
+    public void deleteUserOne(String userId);
+
 }
